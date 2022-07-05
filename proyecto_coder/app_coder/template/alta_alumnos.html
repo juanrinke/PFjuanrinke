@@ -1,0 +1,26 @@
+{% extends  "padre.html" %}
+
+
+{% load static %}
+
+
+
+{% block contenido %}
+<h1> Alta de Alumnos</h1>
+    <form action="alta_alumnos" method="POST">
+        {% csrf_token %}
+        <p>Nombre:</p>
+        <input type="text" name="nombre" required>
+        <p>Camada:</p>
+        <input type="number" name="camada" required>
+        <p>Nacimiento:</p>
+        <input type="date" name="camada" required>
+       
+
+        <input type="submit" value="Enviar">
+
+
+    </form>
+
+
+{% endblock %}

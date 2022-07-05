@@ -1,0 +1,40 @@
+{% extends "padre.html" %}
+
+{%  load static %}
+
+
+{% block contenido %}
+    {% for n in cursos %}
+        <p>{{n.nombre}}</p>
+    {% endfor %}
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Camada</th>           
+          </tr>
+        </thead>
+        <tbody>
+            {% for n in cursos %}
+            <tr>
+                <th scope="row">{{n.id}}</th>
+                <td>{{n.nombre}}</td>
+                <td>{{n.camada}}</td>
+                {% if request.user.is_authenticated %}
+                <td><a href="{%url 'elimina_curso' n.id %}">BORRAR</a></td>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <td><a href="{%url 'editar_curso' n.id %}">EDITAR</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}        
+        
+        </tbody>
+      </table>
+      <button>
+        <a href="alta_curso">Agregar otro curso</a>
+      </button>
+
+{% endblock %}
